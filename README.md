@@ -1,3 +1,4 @@
-./mvnw spring-boot:start
+spring boot com thymeleaf
+mysql
+script anexo
 
-sudo kill -9 $(lsof -t -i:8080)
