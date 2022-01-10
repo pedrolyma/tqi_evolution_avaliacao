@@ -1,0 +1,47 @@
+<div th:replace="shared/header"></div>
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Solicitacoes</h1>
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <a href="/solicitacoes/nova" class="btn btn-primary" style="margin-right: 20px;">Nova</a>
+                <h6 class="m-0 font-weight-bold text-primary" style="display: inline-block;">Lista de administradores</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Dt.Solicitação</th>
+                                <th>Valor</th>
+                                <th>Qt.Parcelas</th>
+                                <th>Primeira Parc</th>
+                                <th>Andamento Processo</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="solicitacao : ${solicitacoes}">
+                                <td th:text="${solicitacao.id}"></td>
+                                <td th:text="${solicitacao.datasolicitacao}"></td>
+                                <td th:text="${solicitacao.valor}"></td>
+                                <td th:text="${solicitacao.qtdeparcela}"></td>
+                                <td th:text="${solicitacao.dataprimeiraparcela}"></td>
+                                <td th:text="${solicitacao.obsdoprocesso}"></td>
+                                <td><a th:href="@{'/solicitacao/' + ${solicitacao.id}}" class="btn btn-warning">Alterar</td>
+                                <td><a href="#" th:onclick="'if(confirm(\'Confirma ?\')) { window.location.href = \'' + @{/solicitacao/{id}(id=${solicitacao.id})} + '/excluir\' } '" class="btn btn-danger">Excluir</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+<div th:replace="shared/footer"></div>
